@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo de Nutrição</title>
+</head>
+<body>
+
+  <h1>Jogo de Nutrição</h1>
+
+  <p>Selecione o seu biotipo:</p>
+
+  <select id="biotipo">
+    <option value="ectomorfo">Ectomorfo</option>
+    <option value="mesomorfo">Mesomorfo</option>
+    <option value="endomorfo">Endomorfo</option>
+  </select>
+
+  <div id="tabela-nutricional"></div>
+
+  <button id="proximo">Próximo</button>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+
+    $(document).ready(function() {
+
+      // Carrega as tabelas nutricionais
+      var tabelasNutricionais = [
+        {
+          calorias: 100,
+          proteinas: 20,
+          carboidratos: 30,
+          gorduras: 10
+        },
+        {
+          calorias: 200,
+          proteinas: 40,
+          carboidratos: 60,
+          gorduras: 20
+        },
+        {
+          calorias: 300,
+          proteinas: 60,
+          carboidratos: 90,
+          gorduras: 30
+        },
+        {
+          calorias: 400,
+          proteinas: 80,
+          carboidratos: 120,
+          gorduras: 40
+        }
+      ];
+
+      // Carrega o biotipo selecionado
+      var biotipo = $("#biotipo").val();
+
+      // Carrega a tabela nutricional
+      $("#tabela-nutricional").html(gerarTabelaNutricional(tabelasNutricionais[Math.floor(Math.random() * tabelasNutricionais.length)]));
+
+      // Define o evento de clique no botão "Próximo"
+      $("#proximo").click(function() {
+
+        // Verifica se a resposta está correta
+        var respostaCorreta = gerarRespostaCorreta(biotipo);
+        var respostaDoJogador = $("#tabela-nutricional").find("input:checked").val();
+
+        if (respostaDoJogador == respostaCorreta) {
+
+          // A resposta está correta
+          // Aumenta a quantidade de vidas
+          <span class="math-inline">\("\#vidas"\)\.text\(parseInt\(</span>("#vidas").text()) + 1);
+
+        } else {
+
+          // A resposta está incorreta
+          // Diminui a quantidade de vidas
+          <span class="math-inline">\("\#vidas"\)\.text\(parseInt\(</span>("#vidas").text()) - 1);
+
+          // Verifica se o jogador perdeu
+          if ($("#vidas").text() == 0) {
+
+            // O jogador perdeu
+            alert("Você perdeu!");
+
+          }
+
+        }
+
+        // Carrega a nova tabela nutricional
+        <span class="math-inline">\("\#tabela\-nutricional"\)\.html\(gerarTabelaNutricional\(tabelasNutricionais\[Math\.floor\(Math\.random\(\) \* tabelasNutricionais\.length\)\]\)\);
+\}\);
+\}\);
+function gerarTabelaNutricional\(tabela\) \{
+return \`
+<table\>
+<thead\>
+<tr\>
+<th\>Calorias</th\>
+<th\>Proteínas</th\>
+<th\>Carboidratos</th\>
+<th\>Gorduras</th\>
+</tr\>
+</thead\>
+<tbody\>
+<tr\>
+<td\></span>{tabela.calorias}</td>
+              <td><span class="math-inline">\{tabela\.proteinas\}</td\>
+<td\></span>{tabela.carboidratos}</td>
+              <td>${tabela.gorduras}</td>
+            </tr>
+          </tbody>
+        </table>
+      `;
+
+    }
+
+    function gerarRespostaCorreta(biotipo) {
+
+      switch (biotipo) {
+        case "ectomorfo":
+          return "Opção 1";
+        case "mesomorfo":
+          return "Opção 2";
